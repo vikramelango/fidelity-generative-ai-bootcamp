@@ -29,8 +29,7 @@ def get_bedrock_client(
         Optional choice of getting different client to perform operations with the Amazon Bedrock service.
     """
     if region is None:
-        target_region = os.environ.get(
-            "AWS_REGION", os.environ.get("AWS_DEFAULT_REGION"))
+        target_region = os.environ.get("AWS_REGION", os.environ.get("AWS_DEFAULT_REGION"))
     else:
         target_region = region
 
@@ -65,9 +64,9 @@ def get_bedrock_client(
         client_kwargs["aws_session_token"] = response["Credentials"]["SessionToken"]
 
     if runtime:
-        service_name = 'bedrock-runtime'
+        service_name='bedrock-runtime'
     else:
-        service_name = 'bedrock'
+        service_name='bedrock'
 
     bedrock_client = session.client(
         service_name=service_name,
